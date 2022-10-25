@@ -11,7 +11,6 @@
 
 /*   EXPRESSION UI   */
 .regexr-expression {
-	width: 100%;
 	display: table;
 
 	font-family: $monospace;
@@ -24,15 +23,8 @@
 	& > .regexr-left, & > .regexr-right {
 		padding: 4px 0;
 		line-height: 24px;
-	}
-
-	& > .regexr-left {
 		width: 15px;
-	}
-
-	& > .regexr-right {
-		text-align: right;
-		width: 80px;
+		color: #ddd;
 	}
 }
 

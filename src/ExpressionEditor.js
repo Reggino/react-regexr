@@ -8,7 +8,6 @@ var React = require('react');
 var shallowCompare = require('react-addons-shallow-compare');
 
 var PatternEditor = require('./PatternEditor');
-var FlagsEditor = require('./FlagsEditor');
 
 class ExpressionEditor extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -21,14 +20,12 @@ class ExpressionEditor extends React.Component {
         <div className="regexr-left">/</div>
         <div>
           <PatternEditor
-            value={this.props.pattern}
-            onChange={this.props.onPatternChange}
-            width={this.props.width}
-            height={this.props.height}
-          />
+              value={this.props.pattern}
+              onChange={this.props.onPatternChange}
+              height={this.props.height} />
         </div>
         <div className="regexr-right">
-          <FlagsEditor value={this.props.flags} onChange={this.props.onFlagsChange} />
+          /
         </div>
       </div>
     );

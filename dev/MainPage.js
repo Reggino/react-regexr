@@ -1,100 +1,98 @@
-"use strict";
+/* eslint-disable */
+'use strict';
 
-var React = require("react");
-var shallowCompare = require("react-addons-shallow-compare");
+var React = require('react');
+var ExpressionEditor = require('../src/ExpressionEditor');
+var SourceEditor = require('../src/SourceEditor');
 
-var ExpressionEditor = require("../src/ExpressionEditor");
-var SourceEditor = require("../src/SourceEditor");
-
-class MainPage extends React.Component {
-  state = {
-    pattern: "([A-Z])\\w+",
-    flags: "g",
-
-    prevMatch: null,
-    nextMatch: null,
-
-    text: [
-      "Welcome to RegExr v2.1 by gskinner.com, proudly hosted by Media Temple!",
-      "",
-      "Edit the Expression & Text to see matches. Roll over matches or the expression for details. Undo mistakes with ctrl-z. Save Favorites & Share expressions with friends or the Community. Explore your results with Tools. A full Reference & Help is available in the Library, or watch the video Tutorial.",
-      "",
-      "Sample text for testing:",
-      "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      "0123456789 _+-.,!@#$%^&*();\\/|<>\"'",
-      "12345 -98.7 3.141 .6180 9,000 +42",
-      "555.123.4567	+1-(800)-555-2468",
-      "foo@demo.net	bar.ba@test.co.uk",
-      "www.demo.com	http://foo.co.uk/",
-      "http://regexr.com/foo.html?q=bar",
-      "https://mediatemple.net",
-    ].join("\n"),
-  };
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
+class MainPage extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      includePattern: '\\/.+\\d+\\/.+.html',
+      excludePattern: '[\\d]+',
+      shouldMatchText: [
+        '/binnenland/6232158/schippers-hadden-vlak-voor-dodelijke-aanvaring-waddenzee-marifooncontact.html',
+        '/buitenland/6231337/britse-vakbonden-boos-over-hoge-uitkering-voor-oud-premier-truss.html',
+        '/achterklap/6232016/zangeres-tabitha-bevallen-van-tweede-dochter.html',
+      ].join('\n'),
+      shouldNotMatchText: [
+        [
+          '/',
+          '/spanningen-oekraine',
+          '/tickets',
+          '/296075/video/hoe-helpt-het-satellietnetwerk-starlink-oekraine-in-de-oorlog.html',
+        ].join('\n'),
+      ],
+    };
   }
 
-  handlePatternChange = (value) => {
-    this.setState({ pattern: value });
+  handleIncludePatternChange = value => {
+    this.setState({ includePattern: value });
   };
 
-  handleFlagsChange = (value) => {
-    this.setState({ flags: value });
+  handleExcludePatternChange = value => {
+    this.setState({ excludePattern: value });
   };
 
-  handleTextChange = (value) => {
-    this.setState({ text: value });
+  handleShouldMatchChange = value => {
+    this.setState({ shouldMatchText: value });
   };
 
-  handleViewportChange = (viewport) => {
-    this.setState({
-      nextMatch: viewport.nextMatch,
-      prevMatch: viewport.prevMatch,
-    });
-  };
-
-  scrollToPrev = () => {
-    this._sourceEditor.scrollToMatch(this.state.prevMatch);
-  };
-
-  scrollToNext = () => {
-    this._sourceEditor.scrollToMatch(this.state.nextMatch);
+  handleShouldNotMatchChange = value => {
+    this.setState({ shouldNotMatchText: value });
   };
 
   render() {
-    var pattern = this.state.pattern;
-    var text = this.state.text;
-    var flags = this.state.flags;
+    const { includePattern, excludePattern, shouldMatchText, shouldNotMatchText } = this.state;
 
     return (
       <div>
-        <ExpressionEditor
-          pattern={pattern}
-          flags={flags}
-          onPatternChange={this.handlePatternChange}
-          onFlagsChange={this.handleFlagsChange}
-        />
-        <SourceEditor
-          pattern={pattern}
-          flags="g"
-          onTextChange={this.handleTextChange}
-          text={text}
-          options={{
-            lineWrapping: true,
-          }}
-          onViewportChange={this.handleViewportChange}
-          ref={function (elem) {
-            this._sourceEditor = elem;
-          }.bind(this)}
-        />
-
-        <button onClick={this.scrollToPrev} type="button">
-          Previous match
-        </button>
-        <button onClick={this.scrollToNext} type="button">
-          Next match
-        </button>
+        <h1>https://www.nu.nl</h1>
+        <div style={{ display: 'flex' }}>
+          <div>
+            <h2>Include</h2>
+            <ExpressionEditor
+              pattern={includePattern}
+              flags={'g'}
+              onPatternChange={this.handleIncludePatternChange}
+            />
+            <h3>Should include</h3>
+            <SourceEditor
+              pattern={includePattern}
+              flags="gm"
+              onTextChange={this.handleShouldMatchChange}
+              text={shouldMatchText || ''}
+              options={{
+                lineWrapping: true,
+              }}
+              ref={function (elem) {
+                this._shouldMatchEditor = elem;
+              }.bind(this)}
+            />
+          </div>
+          <div style={{ marginLeft: 20 }}>
+            <h2>Exclude</h2>
+            <ExpressionEditor
+              pattern={excludePattern}
+              flags="g"
+              onPatternChange={this.handleExcludePatternChange}
+            />
+            <h3>Should exclude</h3>
+            <SourceEditor
+              pattern={excludePattern || ''}
+              flags="g"
+              onTextChange={this.handleShouldNotMatchChange}
+              text={shouldNotMatchText || ''}
+              options={{
+                lineWrapping: true,
+              }}
+              ref={function (elem) {
+                this._shouldNotMatchEditor = elem;
+              }.bind(this)}
+            />
+          </div>
+        </div>
       </div>
     );
   }

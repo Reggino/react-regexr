@@ -18,13 +18,13 @@ class PatternEditor extends React.Component {
     var elem = this._cmElem;
 
     var cm = elem.getCodeMirror();
-    var width = this.props.width || '100%';
+    var width = null;
     var height = this.props.height || 'auto';
     cm.setSize(width, height);
 
     // Copied from regexr code:
     // Hacky method to disable overwrite mode on expressions to avoid overwriting flags
-    cm.toggleOverwrite = function () {};
+    cm.toggleOverwrite = function() {};
 
     this._cmElem = elem;
     this._expressionHighlighter = new ExpressionHighlighter(cm);
@@ -53,20 +53,19 @@ class PatternEditor extends React.Component {
 
     return (
       <CodeMirror
-        className="regexr regexr-expression-editor"
-        value={value}
-        onChange={this.props.onChange}
-        options={{
-          lineNumbers: false,
-          tabSize: 2,
-          indentWithTabs: false,
-          placeholder: '(Type a regular expression)',
-          lineWrapping: true,
-        }}
-        ref={function (elem) {
-          this._cmElem = elem;
-        }.bind(this)}
-      />
+          className="regexr regexr-expression-editor"
+          value={value}
+          onChange={this.props.onChange}
+          options={{
+            lineNumbers: false,
+            tabSize: 2,
+            indentWithTabs: false,
+            placeholder: '(Type a regular expression)',
+            lineWrapping: true,
+          }}
+          ref={function(elem) {
+            this._cmElem = elem;
+          }.bind(this)} />
     );
   }
 }
