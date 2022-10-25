@@ -57,11 +57,11 @@
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.0.6",
     "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.1.1",
+    "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",
     "minifyify": "^7.3.2",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
     "react-dom": "^15.6.2",
@@ -74,6 +74,6 @@
     "webpack-dev-server": "^2.4.2"
   },
   "engines": {
-    "node": ">= 10.x"
+    "node": "10.24.1"
   }
 }
