@@ -5,13 +5,8 @@
 var PropTypes = require('prop-types');
 
 var React = require('react');
-var shallowCompare = require('react-addons-shallow-compare');
 
-class Tooltip extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
-  }
-
+class Tooltip extends React.PureComponent {
   render() {
     var children = this.props.children;
     var className = this.props.className || '';
