@@ -7,12 +7,12 @@ var PropTypes = require('prop-types');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var CodeMirror = require('./Codemirror');
-var SourceHighlighter = require('regexr-site/js/SourceHighlighter');
-var RegExLexer = require('regexr-site/js/RegExLexer');
-var RegExJS = require('regexr-site/js/RegExJS');
-var Docs = require('regexr-site/js/utils/Docs');
-var Tooltip = require('regexr-site/js/controls/Tooltip');
-var CMUtils = require('regexr-site/js/utils/CMUtils');
+var SourceHighlighter = require('./regexr-site/SourceHighlighter');
+var RegExLexer = require('./regexr-site/RegExLexer');
+var RegExJS = require('./regexr-site/RegExJS');
+var Docs = require('./regexr-site/utils/Docs');
+var Tooltip = require('./regexr-site/controls/Tooltip');
+var CMUtils = require('./regexr-site/utils/CMUtils');
 
 var RegexUtils = require('./RegexUtils');
 

@@ -2,7 +2,7 @@
 
 'use strict';
 
-var RegExLexer = require('regexr-site/js/RegExLexer');
+var RegExLexer = require('./regexr-site/RegExLexer');
 var lexer = new RegExLexer();
 
 /**
