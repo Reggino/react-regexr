@@ -24,10 +24,8 @@
   },
   "dependencies": {
     "codemirror": "^5.65.9",
-    "preact": "^10.5.5",
-    "react": "^15.6.2",
-    "react-addons-shallow-compare": "^15.6.2",
-    "react-bootstrap": "0.31.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-codemirror": "~1.0.0",
     "regexr-site": "pxpeterxu/regexr"
   },
@@ -64,7 +62,6 @@
     "node-sass": "^4.14.1",
     "prettier": "^2.7.1",
     "prop-types": "^15.7.2",
-    "react-dom": "^15.6.2",
     "run-sequence": "^1.1.5",
     "sass-loader": "^6.0.3",
     "vinyl-buffer": "^1.0.0",
