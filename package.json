@@ -23,7 +23,7 @@
     "dev": "webpack-dev-server --content-base build/"
   },
   "dependencies": {
-    "codemirror": "~5",
+    "codemirror": "^5.65.9",
     "preact": "^10.5.5",
     "react": "^15.6.2",
     "react-addons-shallow-compare": "^15.6.2",
