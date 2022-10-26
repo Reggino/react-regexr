@@ -6,9 +6,7 @@ var PropTypes = require('prop-types');
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var CodeMirror = require('react-codemirror');
-var shallowCompare = require('react-addons-shallow-compare');
-
+var CodeMirror = require('./Codemirror');
 var SourceHighlighter = require('regexr-site/js/SourceHighlighter');
 var RegExLexer = require('regexr-site/js/RegExLexer');
 var RegExJS = require('regexr-site/js/RegExJS');
@@ -18,7 +16,7 @@ var CMUtils = require('regexr-site/js/utils/CMUtils');
 
 var RegexUtils = require('./RegexUtils');
 
-class SourceEditor extends React.Component {
+class SourceEditor extends React.PureComponent {
   // Using this as a ref, you can also use:
   // - scrollToMatch: scrolls to the nth match
 
@@ -99,7 +97,7 @@ class SourceEditor extends React.Component {
     }
   };
 
-  redraw = (text) => {
+  redraw = text => {
     text = text || this.props.text;
 
     // Redraw source highlights
@@ -144,7 +142,7 @@ class SourceEditor extends React.Component {
    *         prevMatch, nextMatch are the indexes of the
    *         first match before and after the visible section
    */
-  sendOnViewportChange = (matches) => {
+  sendOnViewportChange = matches => {
     if (!this.props.onViewportChange) return;
 
     var cm = this._cmElem.getCodeMirror();
@@ -192,7 +190,7 @@ class SourceEditor extends React.Component {
     }
   };
 
-  handleCMChange = (text) => {
+  handleCMChange = text => {
     this.props.onTextChange(text);
   };
 
@@ -206,7 +204,7 @@ class SourceEditor extends React.Component {
     setTimeout(this.redraw, 1);
   }
 
-  handleMouseMove = (event) => {
+  handleMouseMove = event => {
     this.setState({
       hoverX: event.clientX,
       hoverY: event.clientY,
@@ -222,7 +220,7 @@ class SourceEditor extends React.Component {
    * (does nothing if the nth match doesn't exist)
    * @param {int} matchIndex    index of the match
    */
-  scrollToMatch = (matchIndex) => {
+  scrollToMatch = matchIndex => {
     var cm = this._cmElem.getCodeMirror();
     this.getMatches(this.props.text, function (error, matches) {
       var match = matches[matchIndex];
@@ -235,10 +233,6 @@ class SourceEditor extends React.Component {
       }
     });
   };
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
-  }
 
   render() {
     var text = this.props.text;

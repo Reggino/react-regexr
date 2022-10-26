@@ -1,12 +1,11 @@
 'use strict';
 
 var React = require('react');
-var ReactDOM = require('react-dom');
+var { createRoot } = require('react-dom/client');
 var MainPage = require('./MainPage');
 
-document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    React.createElement(MainPage),
-    document.getElementById('react-main')
-  );
+document.addEventListener('DOMContentLoaded', function () {
+  const container = document.getElementById('react-main');
+  const root = createRoot(container); // createRoot(container!) if you use TypeScript
+  root.render(React.createElement(MainPage));
 });

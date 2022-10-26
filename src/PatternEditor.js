@@ -5,8 +5,7 @@
 var PropTypes = require('prop-types');
 
 var React = require('react');
-var CodeMirror = require('react-codemirror');
-var shallowCompare = require('react-addons-shallow-compare');
+var CodeMirror = require('./Codemirror');
 require('codemirror/addon/display/placeholder');
 
 var ExpressionHighlighter = require('regexr-site/js/ExpressionHighlighter');
@@ -24,7 +23,7 @@ class PatternEditor extends React.Component {
 
     // Copied from regexr code:
     // Hacky method to disable overwrite mode on expressions to avoid overwriting flags
-    cm.toggleOverwrite = function() {};
+    cm.toggleOverwrite = function () {};
 
     this._cmElem = elem;
     this._expressionHighlighter = new ExpressionHighlighter(cm);
@@ -53,19 +52,20 @@ class PatternEditor extends React.Component {
 
     return (
       <CodeMirror
-          className="regexr regexr-expression-editor"
-          value={value}
-          onChange={this.props.onChange}
-          options={{
-            lineNumbers: false,
-            tabSize: 2,
-            indentWithTabs: false,
-            placeholder: '(Type a regular expression)',
-            lineWrapping: true,
-          }}
-          ref={function(elem) {
-            this._cmElem = elem;
-          }.bind(this)} />
+        className="regexr regexr-expression-editor"
+        value={value}
+        onChange={this.props.onChange}
+        options={{
+          lineNumbers: false,
+          tabSize: 2,
+          indentWithTabs: false,
+          placeholder: '(Type a regular expression)',
+          lineWrapping: true,
+        }}
+        ref={function (elem) {
+          this._cmElem = elem;
+        }.bind(this)}
+      />
     );
   }
 }

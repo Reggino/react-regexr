@@ -24,9 +24,10 @@
   },
   "dependencies": {
     "codemirror": "^5.65.9",
+    "create-react-class": "^15.7.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-codemirror": "~1.0.0",
     "regexr-site": "pxpeterxu/regexr"
   },
   "devDependencies": {
