@@ -17,11 +17,11 @@ class MainPage extends React.PureComponent {
         '/achterklap/6232016/zangeres-tabitha-bevallen-van-tweede-dochter.html',
       ].join('\n'),
       shouldNotMatchText: [
-          '/',
-          '/spanningen-oekraine',
-          '/tickets',
-          '/296075/video/hoe-helpt-het-satellietnetwerk-starlink-oekraine-in-de-oorlog.html',
-        ].join('\n'),
+        '/',
+        '/spanningen-oekraine',
+        '/tickets',
+        '/296075/video/hoe-helpt-het-satellietnetwerk-starlink-oekraine-in-de-oorlog.html',
+      ].join('\n'),
     };
   }
 
@@ -43,7 +43,6 @@ class MainPage extends React.PureComponent {
 
   render() {
     const { includePattern, excludePattern, shouldMatchText, shouldNotMatchText } = this.state;
-
     return (
       <div>
         <h1>https://www.nu.nl</h1>

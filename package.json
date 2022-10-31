@@ -58,7 +58,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",
     "minifyify": "^7.3.2",
-    "sass": "^1.55.0",
     "prettier": "^2.7.1",
     "prop-types": "^15.7.2",
     "run-sequence": "^1.1.5",
