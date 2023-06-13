@@ -90,6 +90,15 @@ class MainPage extends React.PureComponent {
             />
           </div>
         </div>
+        <button
+          onClick={() => {
+            this.setState({
+              includePattern: 'something\\dcompletely.different',
+            });
+          }}
+        >
+          Set new value
+        </button>
       </div>
     );
   }

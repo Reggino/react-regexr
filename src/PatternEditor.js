@@ -33,8 +33,10 @@ class PatternEditor extends React.PureComponent {
   }
 
   updateCodeMirror(pattern) {
+    if (this._cmElem) {
+      this._cmElem.getCodeMirror().setValue(pattern);
+    }
     var parsed = RegexUtils.parsePattern(pattern);
-
     this._expressionHighlighter.draw(parsed.tree);
     this._expressionHover.token = parsed.token;
   }
