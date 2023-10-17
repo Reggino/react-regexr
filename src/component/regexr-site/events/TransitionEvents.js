@@ -23,8 +23,8 @@
  SOFTWARE.
  */
 
-import { EventDispatcher } from '../events/EventDispatcher';
-import { Event } from '../events/Event';
+import { RegexrEventDispatcher } from './RegexrEventDispatcher';
+import { RegexrEvent } from './RegexrEvent';
 
 var TransitionEvents = function (target) {
 	this.init(target);
@@ -32,7 +32,7 @@ var TransitionEvents = function (target) {
 var p = TransitionEvents.prototype;
 var s = TransitionEvents;
 
-EventDispatcher.initialize(p);
+RegexrEventDispatcher.initialize(p);
 
 s.TRANSISTION_END = "end";
 s.TRANSISTION_START = "start";
@@ -91,7 +91,7 @@ p.handleIterationEvent = function () {
 	}
 	var _this = this;
 	this._intDelay = setTimeout(function () {
-		_this.dispatchEvent(new Event(s.TRANSISTION_ITERATION));
+		_this.dispatchEvent(new RegexrEvent(s.TRANSISTION_ITERATION));
 	}, 1);
 };
 
@@ -102,7 +102,7 @@ p.handleStartEvent = function () {
 
 	var _this = this;
 	this._startDelay = setTimeout(function () {
-		_this.dispatchEvent(new Event(s.TRANSISTION_START));
+		_this.dispatchEvent(new RegexrEvent(s.TRANSISTION_START));
 	}, 1);
 };
 
@@ -113,7 +113,7 @@ p.handleEndEvent = function (event) {
 
 	var _this = this;
 	this._endDelay = setTimeout(function () {
-		_this.dispatchEvent(new Event(s.TRANSISTION_END));
+		_this.dispatchEvent(new RegexrEvent(s.TRANSISTION_END));
 	}, 100);
 };
 

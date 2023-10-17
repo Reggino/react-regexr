@@ -31,7 +31,7 @@
  */
 
 // namespace:
-import { Event } from './Event';
+import { RegexrEvent } from './RegexrEvent';
 
 /**
  * EventDispatcher provides methods for managing queues of event listeners and dispatching events.
@@ -79,13 +79,13 @@ import { Event } from './Event';
  * If you want to use addEventListener instead, you may want to use function.bind() or a similar proxy to manage scope.
  *
  *
- * @class EventDispatcher
+ * @class RegexrEventDispatcher
  * @constructor
  **/
-var EventDispatcher = function () {
+var RegexrEventDispatcher = function () {
 	/*	this.initialize(); */ // not needed.
 };
-var p = EventDispatcher.prototype;
+var p = RegexrEventDispatcher.prototype;
 
 /**
  * Static initializer to mix EventDispatcher methods into a target object or prototype.
@@ -98,7 +98,7 @@ var p = EventDispatcher.prototype;
  * @param {Object} target The target object to inject EventDispatcher methods into. This can be an instance or a
  * prototype.
  **/
-EventDispatcher.initialize = function (target) {
+RegexrEventDispatcher.initialize = function (target) {
 	target.addEventListener = p.addEventListener;
 	target.on = p.on;
 	target.removeEventListener = target.off = p.removeEventListener;
@@ -307,7 +307,7 @@ p.removeAllEventListeners = function (type) {
  *      this.dispatchEvent(event);
  *
  * @method dispatchEvent
- * @param {Object | String | Event} eventObj An object with a "type" property, or a string type.
+ * @param {Object | String | RegexrEvent} eventObj An object with a "type" property, or a string type.
  * While a generic object will work, it is recommended to use a CreateJS Event instance. If a string is used,
  * dispatchEvent will construct an Event instance with the specified type.
  * @param {Object} [target] The object to use as the target property of the event object. This will default to the
@@ -321,7 +321,7 @@ p.dispatchEvent = function (eventObj, target) {
 		if (!listeners || !listeners[eventObj]) {
 			return false;
 		}
-		eventObj = new Event(eventObj);
+		eventObj = new RegexrEvent(eventObj);
 	}
 	// TODO: deprecated. Target param is deprecated, only use case is MouseEvent/mousemove, remove.
 	try {
@@ -394,7 +394,7 @@ p.toString = function () {
 // private methods:
 /**
  * @method _dispatchEvent
- * @param {Object | String | Event} eventObj
+ * @param {Object | String | RegexrEvent} eventObj
  * @param {Object} eventPhase
  * @protected
  **/
@@ -431,4 +431,4 @@ p._dispatchEvent = function (eventObj, eventPhase) {
 	}
 };
 
-export {  EventDispatcher };
+export {  RegexrEventDispatcher };

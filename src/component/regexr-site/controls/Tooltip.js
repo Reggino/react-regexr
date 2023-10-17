@@ -22,13 +22,13 @@
  SOFTWARE.
  */
 
-import { EventDispatcher } from '../events/EventDispatcher';
+import { RegexrEventDispatcher } from '../events/RegexrEventDispatcher';
 import { Utils } from '../utils/Utils';
 
 var Tooltip = function (target, content, config) {
 	this.initialize(target, content, config);
 };
-var p = Tooltip.prototype = new EventDispatcher();
+var p = Tooltip.prototype = new RegexrEventDispatcher();
 
 Tooltip.add = function (target, content, config) {
 	return new Tooltip(target, content, config);
