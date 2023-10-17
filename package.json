@@ -1,70 +1,47 @@
 {
   "name": "react-regexr",
   "version": "0.1.0",
-  "description": "A React wrapper for the Regex editor part of RegExr (http://www.regexr.com/)",
-  "keywords": [
-    "regex",
-    "editor",
-    "regexr"
+  "main": "dist/index.js",
+  "files": [
+    "dist/"
   ],
-  "homepage": "https://github.com/pxpeterxu/react-regexr#readme",
-  "bugs": {
-    "url": "https://github.com/pxpeterxu/react-regexr/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pxpeterxu/react-regexr.git"
-  },
-  "license": "MIT",
-  "author": "Myrtlelime Inc.",
-  "main": "lib/Index.js",
-  "scripts": {
-    "build": "babel src -d lib",
-    "dev": "webpack-dev-server --content-base build/"
-  },
+  "types": "./dist/index.d.ts",
+  "private": false,
   "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "codemirror": "^5.65.9",
     "create-react-class": "^15.7.0",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.4.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
-    "babel-preset-react": "^6.23.0",
-    "babelify": "^7.2.0",
-    "browserify": "^12.0.2",
-    "css-loader": "^0.27.3",
-    "eslint": "^2.13.1",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-config-airbnb-base": "^3.0.1",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^1.10.3",
-    "eslint-plugin-jsx-a11y": "^1.5.5",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-react": "^5.2.2",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "^0.10.1",
-    "gulp": "^3.9.0",
-    "gulp-cached": "^1.1.0",
-    "gulp-eslint": "^2.1.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-nodemon": "^2.0.6",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-watch": "^4.3.5",
-    "minifyify": "^7.3.2",
-    "prettier": "^2.7.1",
-    "prop-types": "^15.7.2",
-    "run-sequence": "^1.1.5",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "build": "rm -rf dist; tsc -p tsconfig.json; sass --no-source-map src/component/index.scss dist/index.css",
+    "prepublishOnly": "npm run build",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
